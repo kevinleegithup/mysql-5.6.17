@@ -19,6 +19,7 @@
   dst.	 The similar UNIX routine strcpy returns the old value of dst,
   which I have never found useful.  strmov(strmov(dst,a),b) moves a//b
   into dst, which seems useful.
+  但是貌似系统的strcpy判断是否为NULL 更健壮的说 连续使用
 */
 
 #include <my_global.h>
@@ -29,6 +30,8 @@
 #define strmov strmov_overlapp
 #endif
 
+////lkb bool(\0) int(\0)=0  所以没有显示的比较是否!='\0'
+////    register是建议将变量放入寄存器（网上说不可以取地址的哦） 加快使用
 char *strmov(register char *dst, register const char *src)
 {
   while ((*dst++ = *src++)) ;
