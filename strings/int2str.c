@@ -119,6 +119,7 @@ int2str(register long int val, register char *dst, register int radix,
     int10_to_str()
       val     - value to convert
       dst     - points to buffer where string representation should be stored
+	  ////lkb 应该是基数，而不应该是符号位
       radix   - flag that shows whenever val should be taken as signed or not
 
   DESCRIPTION
@@ -132,6 +133,7 @@ int2str(register long int val, register char *dst, register int radix,
 
 char *int10_to_str(long int val,char *dst,int radix)
 {
+  ////lkb 最长64位 
   char buffer[65];
   register char *p;
   long int new_val;
@@ -147,9 +149,21 @@ char *int10_to_str(long int val,char *dst,int radix)
     }
   }
 
+  /*////lkb
+  	long int val=-10;
+	unsigned long int uval=(unsigned long int) val;
+	std::cout<<val<<"-"<<uval<<std::endl;
+	uval = (unsigned long int)0 - uval;
+	std::cout<<val<<"-"<<uval<<std::endl;
+	-10  4294967286
+	-10  10
+  */
+
   p = &buffer[sizeof(buffer)-1];
   *p = '\0';
+  ////lkb 除以10没问题 肯定是正数long
   new_val= (long) (uval / 10);
+  ////lkb 乘以10可能会变成负数偶 所以强转unsigned   不过觉得不必要这样用unsigned即可
   *--p = '0'+ (char) (uval - (unsigned long) new_val * 10);
   val = new_val;
 
