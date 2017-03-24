@@ -14,6 +14,10 @@
    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301  USA */
 
 /* Dynamic hashing of record with different key-length */
+////lkb  动态hash：1. 动态的增加slot，但是并不全部移动已经hash好的部分，只是重新计算本地填写的hash的遗漏部分。
+////               2. 查找的时候也可能查找多次
+////                  优点是节省空间；平滑稳定的扩容
+////               红黑书、堆排序 稳定的时间复杂度，都对倾斜做了处理
 
 #ifndef _hash_h
 #define _hash_h

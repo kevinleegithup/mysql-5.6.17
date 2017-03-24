@@ -397,6 +397,8 @@ extern MY_CHARSET_HANDLER my_charset_ucs2_handler;
 */
 #define CHARSET_INFO_DEFINED
 
+////lkb http://mysql.taobao.org/monthly/2017/03/06/
+
 /* See strings/CHARSET_INFO.txt about information on this structure  */
 typedef struct charset_info_st
 {

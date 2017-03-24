@@ -123,7 +123,7 @@ _my_hash_init(HASH *hash, uint growth_size, CHARSET_INFO *charset,
   NOTES:
     Sets records to 0
 */
-
+////lkb 逐个的将hash的array中的元素进行free
 static inline void my_hash_free_elements(HASH *hash)
 {
   if (hash->free)

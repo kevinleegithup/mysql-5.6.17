@@ -184,6 +184,8 @@
   other reason to use them is for documentation
 */
 
+////lkb likely __builtin_expect 编译器优化减少分叉预测
+
 #if !defined(__GNUC__) || (__GNUC__ == 2 && __GNUC_MINOR__ < 96)
 #define __builtin_expect(x, expected_value) (x)
 #endif
