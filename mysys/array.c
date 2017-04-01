@@ -132,6 +132,7 @@ void *alloc_dynamic(DYNAMIC_ARRAY *array)
   if (array->elements == array->max_element)
   {
     char *new_ptr;
+	////lkb Ê²Ã´ÒâË¼£¿
     if (array->buffer == (uchar *)(array + 1))
     {
       /*
